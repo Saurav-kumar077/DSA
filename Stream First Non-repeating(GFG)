@@ -1,0 +1,26 @@
+class Solution {
+  public:
+    string FirstNonRepeating(string &s) {
+        map<char, int> count;
+        queue<char> q;
+        string ans = "";
+
+        for (int i = 0; i < s.size(); i++) {
+            char ch = s[i];
+            count[ch]++;
+            q.push(ch);
+
+            // Remove characters from front of queue while they repeat
+            while (!q.empty() && count[q.front()] > 1) {
+                q.pop();
+            }
+
+            if (q.empty()) {
+                ans.push_back('#');
+            } else {
+                ans.push_back(q.front());
+            }
+        }
+        return ans;
+    }
+};

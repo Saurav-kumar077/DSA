@@ -65,14 +65,14 @@ void heapify(int arr[],int n,int i){
     int right = 2*i+1;
     if(left<=n && arr[largest]<arr[left]){
         swap(arr[left],arr[largest]);
-        left=largest;
+        largest=left;
     }
     if(right<=n && arr[largest]<arr[right]){
         swap(arr[largest],arr[right]);
-        right=largest;
+        largest=right;
     }
     if(largest != i ){
-        swap(arr[largest],arr[i]);
+        swap(arr[i],arr[largest]);
         heapify(arr,n,largest);
     }
 }
